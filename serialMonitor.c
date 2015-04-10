@@ -83,13 +83,13 @@ void syncronous(int fd, int blocking){
 }
 int init(void){
 
- // const char *port = RECEIVER_0_PORT;
-  const char *port1 = SLAVE_0_PORT;
+  const char *port = RECEIVER_0_PORT;
+  //const char *port1 = SLAVE_0_PORT;
 
   printf("opening file...\n");
-  int fd = open(port1, O_RDWR | O_NOCTTY);
+  int fd = open(port, O_RDWR | O_NOCTTY);
   if(fd < 0){
-    printf("error in %d opening %s", errno, port1);
+    printf("error in %d opening %s", errno, port);
     return -1;
   }
   printf("setting serial options...\n");
@@ -101,7 +101,7 @@ int init(void){
   printf("Welcome to EnMonitor 0.1.0 Command Shell\r\n\n"
          "Compiled on Feb 21 2015\r\n"
          "Porting Data from %s \r\n\n"
-         "Stop with CTRL-C\n\n\n", port1);
+         "Stop with CTRL-C\n\n\n", port);
 
   return fd;
 }
